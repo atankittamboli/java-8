@@ -1,4 +1,4 @@
-package stream_Easy;
+package stream_easy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,13 +13,13 @@ public class employeeByDepartment {
 		
 		List<Employee> listEmployee = new ArrayList<Employee>();
 		
-		Employee employee1 = new Employee("A", "1", "IT");
-		Employee employee2 = new Employee("B", "1", "IT");
-		Employee employee3 = new Employee("c", "2", "HR");
-		Employee employee4 = new Employee("D", "2", "HR");
-		Employee employee5 = new Employee("E", "3", "Finance");
-		Employee employee6 = new Employee("F", "3", "Finance");
-		Employee employee7 = new Employee("G", "3", "Finance");
+		Employee employee1 = new Employee("A", "1", "IT", 10001);
+		Employee employee2 = new Employee("B", "1", "IT", 100);
+		Employee employee3 = new Employee("c", "2", "HR", 100011);
+		Employee employee4 = new Employee("D", "2", "HR", 100);
+		Employee employee5 = new Employee("E", "3", "Finance", 10099);
+		Employee employee6 = new Employee("F", "3", "Finance", 10037);
+		Employee employee7 = new Employee("G", "3", "Finance", 10002);
 		
 		listEmployee.add(employee7);
 		listEmployee.add(employee6);
@@ -36,6 +36,13 @@ public class employeeByDepartment {
 		
 		 departmentCount.forEach((department, count) -> 
 		 System.out.println(department + " is " + count));
+		 
+		 List<String> ls = listEmployee.stream()
+				 .sorted((a,b)-> Integer.compare(a.getSalary(), b.getSalary()))
+				 .map(i-> i.getFirstName())
+				 .collect(Collectors.toList());
+		 
+		 System.out.println(" ls " + ls);
 		 
 	}
 
